@@ -1,0 +1,48 @@
+Prompt 1:
+Atue como um Engenheiro de Software Sênior e Especialista em UX/IHC.
+CONTEXTO:
+Estamos desenvolvendo um protótipo chamado "Privacy Tool" para um trabalho universitário de Interação Humano-Computador. O objetivo da aplicação é avaliar e demonstrar o nível de adequação à LGPD de softwares de forma simplificada, traduzindo dados complexos de políticas de privacidade em indicadores visuais claros (Score e Medalhas) para usuários leigos.  
+METODOLOGIA:
+O projeto utiliza a abordagem SPEC-Driven Development. A IA não deve atuar com "vibe coding", mas sim baseada em contratos estritos, com regras de negócio determinísticas e design voltado à redução da carga cognitiva.  
+SUA TAREFA:
+Crie o conteúdo completo de 3 arquivos Markdown que servirão como a Especificação (Specs) do sistema.
+Arquivo 1: specs/ux.md
+Defina a premissa de um design "calmo, tátil e ultramoderno", focado em transmitir confiança e precisão.  
+Aplique as Heurísticas de Nielsen (prevenção de erros, visibilidade do status, linguagem do mundo real) e os princípios de Interação Humano-Dados (IHD).  
+Descreva o layout de 3 telas: 1) Home (com CTA claro); 2) Formulário Guiado (Progressive Disclosure, uma pergunta por vez para reduzir carga cognitiva); 3) Dashboard de Resultados.
+Arquivo 2: specs/spec.md
+Estabeleça o "Modelo de Domínio" e "Regras de Negócio" determinísticas.  
+Defina que as opções de resposta valem pontos exatos (Suficiente = 100, Insuficiente = 50, Inexistente = 0).  
+Defina o cálculo da pontuação média (Score) e o mapeamento para "Medalhas" (Ouro: 91-100, Prata: 61-90, Bronze: 41-60, Incipiente: 0-40).  
+Deixe explícito que todo cálculo matemático e consolidação pertencem ao backend e que o frontend não deve recalcular dados.  
+Arquivo 3: specs/stories.md
+Escreva 3 cenários de uso utilizando a sintaxe BDD (Given/When/Then) focados na jornada do usuário leigo (Ex: Iniciar inspeção, responder pergunta e ver resultado).  
+Gere a resposta entregando apenas os blocos de código Markdown para cada um dos 3 arquivos, prontos para serem copiados.
+
+Prompt 2:
+Atue como um Engenheiro de Software Sênior especialista em Vue 3 (Composition API) e TailwindCSS.
+
+Seu objetivo é implementar o protótipo funcional frontend do sistema 'Privacy Tool' seguindo estritamente a metodologia SPEC-Driven Development.
+
+INSTRUÇÕES OBRIGATÓRIAS (Leia o contexto local):
+
+Leia e analise os seguintes arquivos de contrato presentes na pasta specs/ antes de escrever qualquer código:
+
+specs/ux.md (Diretrizes de Design Calmo, feedback tátil e redução de carga cognitiva)
+
+specs/spec.md (Regras de negócio, modelo de domínio e restrições arquiteturais)
+
+specs/stories.md (Comportamento esperado no formato BDD)
+
+Zero Vibe Coding: A interface deve refletir exatamente os contratos. Não invente funcionalidades adicionais fora do escopo.
+
+Frontend Stateless: Conforme a 'Governança Arquitetural' do spec.md, o frontend NÃO deve realizar as consolidações matemáticas finais. Para este protótipo visual, crie o fluxo completo das telas e simule (mock) a devolução da API no momento de finalizar a inspeção, retornando um objeto estático que respeite o contrato (ex: Score 79.16 e Medalha 'PRATA').
+
+TELAS A SEREM DESENVOLVIDAS:
+
+Home: Tela inicial com a proposta de valor e o botão tátil de iniciar.
+
+Formulário Guiado: Aplique 'Progressive Disclosure' mostrando apenas UMA pergunta por tela. O botão 'Avançar' deve iniciar desabilitado e só habilitar quando o usuário clicar em um dos cards de resposta (Suficiente, Insuficiente, Inexistente).
+
+Dashboard de Resultados: Renderize o Score numérico em destaque e o componente visual da Medalha conquistada.
+Inicialize o projeto Vue 3 com TailwindCSS e crie a estrutura de componentes agora.
