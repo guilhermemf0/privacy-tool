@@ -117,13 +117,15 @@ const shimmerId = computed(() => `medal-shimmer-${props.medal.toLowerCase()}`)
           {{ config.emoji }}
         </text>
 
-        <!-- Engraved label arc -->
+        <!-- Engraved label arc —
+             Arco: semicírculo inferior do círculo da medalha (cx=80, cy=100, r=44).
+             Comprimento de arco ≈ 138px, suficiente para "PRIVACY TOOL" sem corte. -->
         <path
           id="medal-arc"
-          d="M 44 130 A 40 40 0 0 0 116 130"
+          d="M 36 100 A 44 44 0 0 1 124 100"
           fill="none"
         />
-        <text font-size="10" font-weight="700" letter-spacing="2" fill="white" opacity="0.85">
+        <text font-size="9" font-weight="700" letter-spacing="1.5" fill="white" opacity="0.85">
           <textPath href="#medal-arc" startOffset="50%" text-anchor="middle">
             PRIVACY TOOL
           </textPath>

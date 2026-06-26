@@ -50,6 +50,27 @@
     @apply opacity-40 cursor-not-allowed shadow-none;
   }
 
+  /* Tactile Button — Secondary (outline, hierarquia visual inferior) */
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center gap-2 px-7 py-3.5
+           bg-transparent text-cobalt-light font-semibold text-sm tracking-wide rounded-xl
+           border border-cobalt/40 cursor-pointer select-none
+           transition-all duration-150 ease-out;
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    @apply bg-cobalt/10 border-cobalt/70 text-white -translate-y-px;
+    box-shadow: 0 0 12px rgba(59, 108, 248, 0.2);
+  }
+
+  .btn-secondary:active:not(:disabled) {
+    @apply translate-y-0 bg-cobalt/15;
+  }
+
+  .btn-secondary:disabled {
+    @apply opacity-40 cursor-not-allowed;
+  }
+
   /* Tactile Card */
   .card-surface {
     @apply bg-surface rounded-2xl shadow-tactile border border-surface-border

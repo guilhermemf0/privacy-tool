@@ -1,0 +1,96 @@
+Prompt 1:
+Atue como um Engenheiro de Software Sênior e Especialista em UX/IHC.
+CONTEXTO:
+Estamos desenvolvendo um protótipo chamado "Privacy Tool" para um trabalho universitário de Interação Humano-Computador. O objetivo da aplicação é avaliar e demonstrar o nível de adequação à LGPD de softwares de forma simplificada, traduzindo dados complexos de políticas de privacidade em indicadores visuais claros (Score e Medalhas) para usuários leigos.  
+METODOLOGIA:
+O projeto utiliza a abordagem SPEC-Driven Development. A IA não deve atuar com "vibe coding", mas sim baseada em contratos estritos, com regras de negócio determinísticas e design voltado à redução da carga cognitiva.  
+SUA TAREFA:
+Crie o conteúdo completo de 3 arquivos Markdown que servirão como a Especificação (Specs) do sistema.
+Arquivo 1: specs/ux.md
+Defina a premissa de um design "calmo, tátil e ultramoderno", focado em transmitir confiança e precisão.  
+Aplique as Heurísticas de Nielsen (prevenção de erros, visibilidade do status, linguagem do mundo real) e os princípios de Interação Humano-Dados (IHD).  
+Descreva o layout de 3 telas: 1) Home (com CTA claro); 2) Formulário Guiado (Progressive Disclosure, uma pergunta por vez para reduzir carga cognitiva); 3) Dashboard de Resultados.
+Arquivo 2: specs/spec.md
+Estabeleça o "Modelo de Domínio" e "Regras de Negócio" determinísticas.  
+Defina que as opções de resposta valem pontos exatos (Suficiente = 100, Insuficiente = 50, Inexistente = 0).  
+Defina o cálculo da pontuação média (Score) e o mapeamento para "Medalhas" (Ouro: 91-100, Prata: 61-90, Bronze: 41-60, Incipiente: 0-40).  
+Deixe explícito que todo cálculo matemático e consolidação pertencem ao backend e que o frontend não deve recalcular dados.  
+Arquivo 3: specs/stories.md
+Escreva 3 cenários de uso utilizando a sintaxe BDD (Given/When/Then) focados na jornada do usuário leigo (Ex: Iniciar inspeção, responder pergunta e ver resultado).  
+Gere a resposta entregando apenas os blocos de código Markdown para cada um dos 3 arquivos, prontos para serem copiados.
+
+Prompt 2:
+Atue como um Engenheiro de Software Sênior especialista em Vue 3 (Composition API) e TailwindCSS.
+Seu objetivo é implementar o protótipo funcional frontend do sistema 'Privacy Tool' seguindo estritamente a metodologia SPEC-Driven Development.
+
+INSTRUÇÕES OBRIGATÓRIAS (Leia o contexto local):
+
+Leia e analise os seguintes arquivos de contrato presentes na pasta specs/ antes de escrever qualquer código:
+
+specs/ux.md (Diretrizes de Design Calmo, feedback tátil e redução de carga cognitiva)
+
+specs/spec.md (Regras de negócio, modelo de domínio e restrições arquiteturais)
+
+specs/stories.md (Comportamento esperado no formato BDD)
+
+Zero Vibe Coding: A interface deve refletir exatamente os contratos. Não invente funcionalidades adicionais fora do escopo.
+Frontend Stateless: Conforme a 'Governança Arquitetural' do spec.md, o frontend NÃO deve realizar as consolidações matemáticas finais. Para este protótipo visual, crie o fluxo completo das telas e simule (mock) a devolução da API no momento de finalizar a inspeção, retornando um objeto estático que respeite o contrato (ex: Score 79.16 e Medalha 'PRATA').
+
+TELAS A SEREM DESENVOLVIDAS:
+
+Home: Tela inicial com a proposta de valor e o botão tátil de iniciar.
+Formulário Guiado: Aplique 'Progressive Disclosure' mostrando apenas UMA pergunta por tela. O botão 'Avançar' deve iniciar desabilitado e só habilitar quando o usuário clicar em um dos cards de resposta (Suficiente, Insuficiente, Inexistente).
+Dashboard de Resultados: Renderize o Score numérico em destaque e o componente visual da Medalha conquistada.
+Inicialize o projeto Vue 3 com TailwindCSS e crie a estrutura de componentes agora.
+
+Prompt 3:
+
+O protótipo visual ficou excelente, mas precisamos ajustar a simulação (mock) dos resultados para a apresentação.
+Atualmente, o sistema está retornando o valor estático de 79 (Prata) independente das respostas.
+
+TAREFA:
+
+Atualize o componente ou a store que gerencia o estado do formulário.
+Implemente a lógica de cálculo dinâmica baseada na RN-01 e RN-03 do spec.md (Suficiente = 100, Insuficiente = 50, Inexistente = 0).
+Ao clicar em 'Finalizar Inspeção', calcule a média real das respostas dadas pelo usuário e exiba o Score exato no Dashboard.
+Exiba a Medalha correta correspondente ao score calculado (Ouro, Prata, Bronze ou Incipiente).
+AVISO: Sabemos que pela arquitetura SSOT o backend deveria fazer isso, mas como este é um protótipo visual sem servidor (standalone), a lógica deve residir no frontend provisoriamente para fins de demonstração acadêmica. Não apague nenhum arquivo Markdown da pasta specs/.
+
+Prompt 4:
+
+No componente MedalBadge.vue, o texto circular em volta da medalha está sendo cortado nas extremidades, exibindo 'RIVACY TOO' em vez de 'PRIVACY TOOL'. Por favor, ajuste o viewBox do SVG, diminua levemente o font-size ou ajuste o startOffset do textPath para garantir que a palavra inteira caiba perfeitamente e fique legível.
+
+Prompt 5:
+
+A interface está excelente. Para finalizar o protótipo, precisamos implementar a funcionalidade de exportação de resultados.
+
+TAREFA:
+
+Na tela ResultsView.vue (Dashboard de Resultados), adicione um botão secundário chamado [ Baixar Relatório (PDF) ] logo abaixo ou ao lado do botão de 'Nova Avaliação'.
+O botão deve seguir as diretrizes visuais do ux.md: estado de hover suave e estilo consistente, mas com uma hierarquia visual secundária (ex: estilo outline ou fundo mais discreto) para não ofuscar a ação principal.
+Implemente a funcionalidade para que, ao clicar neste botão, a tela de resultados (incluindo o Score, a Medalha e o resumo das respostas) seja convertida e baixada como um arquivo PDF (você pode utilizar uma biblioteca leve como html2pdf.js ou similar).
+Certifique-se de que o PDF gerado mantenha o fundo escuro e a legibilidade dos elementos.
+
+Prompt 6:
+
+O recurso de exportação para PDF está funcionando, mas o arquivo gerado perdeu a formatação do fundo escuro, deixando o texto ilegível (fundo claro com letras claras).
+TAREFA:
+
+Ajuste a configuração da biblioteca de PDF (ex: html2pdf.js ou html2canvas).
+Force a renderização do background-color (use a mesma cor escura do Tailwind, ex: #0f172a) no elemento contêiner no momento da captura.
+Se necessário, aplique estilos inline temporários no clone do elemento antes de gerar o canvas para garantir que o CSS do Tailwind seja respeitado.
+
+Prompt 7:
+O método atual de captura de tela está gerando PDFs desalinhados e esteticamente ruins. Precisamos de uma abordagem mais robusta para gerar o relatório em PDF.
+
+TAREFA:
+
+Remova a dependência de html2pdf.js / html2canvas.
+Instale jspdf e jspdf-autotable.
+No ResultsView.vue, crie uma função generateProfessionalPdf() que utilize o jsPDF.
+Em vez de capturar a tela, desenhe o conteúdo manualmente no PDF:
+Use doc.text() para o Título 'Privacy Tool - Relatório de Auditoria'.
+Use doc.setFontSize() para definir uma hierarquia visual clara.
+Use doc.autoTable() para listar as 12 perguntas e as respostas selecionadas (Suficiente, Insuficiente, Inexistente).
+Adicione o Score Geral e a Medalha conquistada em destaque usando doc.rect() ou doc.setFillColor() para simular as caixas coloridas.
+Isso garante que o PDF seja gerado com fontes nítidas, alinhamento perfeito e sem depender de como o navegador renderiza as classes CSS.
